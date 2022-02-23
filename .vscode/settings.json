@@ -1,0 +1,26 @@
+{
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[md]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.format.enable": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "eslint.alwaysShowStatus": true,
+  "editor.formatOnSave": true,
+  "editor.detectIndentation": false,
+  "editor.formatOnPaste": true,
+  "files.insertFinalNewline": true,
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "editor.tabSize": 2,
+}

@@ -1,0 +1,12 @@
+.yalc/
+.vscode/
+.idea/
+__tests__/
+node_modules/
+src/
+.editorconfig
+.gitignore
+styleguide.config.js
+styleguide.styles.js
+yalc.lock
+yarn-error.log
