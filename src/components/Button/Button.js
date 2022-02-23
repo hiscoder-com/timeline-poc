@@ -7,13 +7,11 @@ import PropTypes from 'prop-types';
 
 const events = [
   {
-    media: {
-      url: 'https://link.to.file',
-    },
     start_date: {
-      year: '2017',
-      month: '01',
-      day: '01',
+      year: '-2000',
+    },
+    end_date: {
+      year: '-1700',
     },
     text: {
       headline: 'A headline',
@@ -21,34 +19,40 @@ const events = [
     },
   },
   {
-    media: {
-      url: 'https://link.to.another.file',
-    },
     start_date: {
-      year: '2006',
-      month: '01',
-      day: '01',
+      year: '-1300',
     },
     text: {
       headline: 'Another headline',
-      text: 'Some more text here',
+      text: '<h2>Some more text here</h2> Hello <b>WORLD</b>',
     },
   },
 ];
+
+const options = {
+  // height: '1000px',
+  // width: '1000px',
+  // default_bg_color: 'white',
+  // scale_factor: 2,
+  // initial_zoom: 5,
+  // timenav_position: 'bottom', //'top'
+};
 
 function Button({ text, onClick }) {
   log('test');
 
   const timelineEl = React.useRef(null);
+  React.useEffect(() => {}, []);
+
   React.useEffect(() => {
     if (timelineEl.current) {
-      new Timeline(timelineEl.current, { events });
+      new Timeline(timelineEl.current, { events, options });
     }
   }, [timelineEl.current]);
 
   return (
     <>
-      <div ref={timelineEl}></div>
+      <div style={{ height: '600px' }} ref={timelineEl}></div>
     </>
   );
 }
