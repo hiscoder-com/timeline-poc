@@ -76,18 +76,23 @@ module.exports = {
           exclude: /node_modules/,
           loader: 'babel-loader',
         },
-        {
-          test: /\.css$/,
-          include: dir,
-          loader: 'style!css?modules&importLoaders=1',
-        },
-        {
-          test: /\.scss$/,
-          loader: 'sass-loader',
-        },
+        // {
+        //   test: /\.css$/,
+        //   include: /dir/,
+        //   loader: 'style!css?modules&importLoaders=1',
+        // },
+        // {
+        //   test: /\.scss$/,
+        //   loader: 'sass-loader',
+        // },
         {
           test: /\.less$/,
-          loader: 'sass-loader',
+          use: [
+            // compiles Less to CSS
+            "style-loader",
+            "css-loader",
+            "less-loader",
+          ],
         },
       ],
     },
