@@ -1,12 +1,9 @@
 import React from 'react';
-import { Button as MuiButton } from '@material-ui/core';
 import { Timeline } from '@knight-lab/timelinejs';
 // import '@knight-lab/timelinejs/dist/css/timeline.css';
 import { log } from '../../utils';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import ReactMarkdown from 'react-markdown';
-import { useRemark } from 'react-remark';
 import showdown from 'showdown';
 
 const options = {
@@ -18,10 +15,9 @@ const options = {
   // timenav_position: 'bottom', //'top'
 };
 
-function Button({ text, onClick }) {
+function Button() {
   log('test');
   const [events, setEvents] = React.useState([]);
-  const [reactContent, setMarkdownSource] = useRemark();
 
   const timelineEl = React.useRef(null);
   React.useEffect(() => {
