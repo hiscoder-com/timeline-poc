@@ -1,7 +1,7 @@
 import React from 'react';
 import { Timeline, Events, UrlButton, ImageEvent, TextEvent } from '@merc/react-timeline';
 
-function VerticalTimeLine() {
+function VerticalTimeline() {
   return (
     <Timeline>
       <Events>

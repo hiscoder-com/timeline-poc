@@ -8,11 +8,11 @@ let sections = [
     content: 'README.md',
   },
   {
-    name: 'TimeLine Block',
+    name: 'TimeLine Block1',
     components: ['src/components/HorizontalTimeline/HorizontalTimeline.js'],
   },
   {
-    name: 'TimeLine Block',
+    name: 'TimeLine Block2',
     components: ['src/components/VerticalTimeline/VerticalTimeline.js'],
   },
   {
