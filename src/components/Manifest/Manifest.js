@@ -3,9 +3,8 @@ import React from 'react';
 import YAML from 'js-yaml-parser';
 import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
 
-function Manifest({ link }) {
+function Manifest({ link, setProject }) {
   const [projects, setProjects] = React.useState([]);
-  const [project, setProject] = React.useState();
   const [items, setItems] = React.useState();
   const [current, setCurrent] = React.useState(0);
   React.useEffect(() => {
@@ -28,14 +27,12 @@ function Manifest({ link }) {
     }
   }, [projects]);
 
-  console.log(project);
   const handleChange = (e) => {
     setCurrent(e.target.value);
     setProject(projects[e.target.value]);
   };
   return (
     <>
-      <div>Manifest link: {link}</div>
       <FormControl>
         <InputLabel id="demo-simple-select-label">Projects</InputLabel>
         <Select

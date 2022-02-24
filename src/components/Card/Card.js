@@ -1,12 +1,29 @@
 import React from 'react';
 import { log } from '../../utils';
 import PropTypes from 'prop-types';
-import Timeline from '../HorizontalTimeline';
+import Timeline from '../Timeline';
 import { Card as CardData } from 'translation-helps-rcl';
+import { Manifest } from '..';
+import path from 'path';
 
-function Card() {
-  log('test');
-
+const server = 'https://git.door43.org/';
+function Card({ username, repository }) {
+  const [project, setProject] = React.useState();
+  const [tlLink, setTlLink] = React.useState();
+  const uri = path.join(username, repository, 'raw/branch', 'master', './manifest.yaml');
+  log({ uri, project });
+  React.useEffect(() => {
+    if (project) {
+      const _tlLink = path.join(
+        username,
+        repository,
+        'raw/branch',
+        'master',
+        project.path
+      );
+      setTlLink(_tlLink);
+    }
+  }, [project]);
   return (
     <>
       <CardData
@@ -21,7 +38,8 @@ function Card() {
         hideMarkdownToggle={true}
         showSaveChangesPrompt={false}
       >
-        <Timeline />
+        <Manifest setProject={setProject} link={server + uri} />
+        {project && <Timeline link={server + tlLink} type={project.categories[0]} />}
       </CardData>
     </>
   );

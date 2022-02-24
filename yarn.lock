@@ -11577,7 +11577,7 @@ path-type@^4.0.0:
 
 path@^0.12.7:
   version "0.12.7"
-  resolved "https://registry.npmjs.org/path/-/path-0.12.7.tgz"
+  resolved "https://registry.yarnpkg.com/path/-/path-0.12.7.tgz#d4dc2a506c4ce2197eb481ebfcd5b36c0140b10f"
   integrity sha1-1NwqUGxM4hl+tIHr/NWzbAFAsQ8=
   dependencies:
     process "^0.11.1"
