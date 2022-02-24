@@ -8,8 +8,12 @@ let sections = [
     content: 'README.md',
   },
   {
-    name: 'Test Block',
-    components: ['src/components/Timeline/Timeline.js'],
+    name: 'TimeLine Block',
+    components: ['src/components/HorizontalTimeline/HorizontalTimeline.js'],
+  },
+  {
+    name: 'TimeLine Block',
+    components: ['src/components/VerticalTimeline/VerticalTimeline.js'],
   },
   {
     name: 'Card Block',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { log } from '../../utils';
 import PropTypes from 'prop-types';
-import Timeline from '../Timeline';
+import Timeline from '../HorizontalTimeline';
 import { Card as CardData } from 'translation-helps-rcl';
 
 function Card() {

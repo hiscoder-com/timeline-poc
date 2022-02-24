@@ -76,6 +76,7 @@
     "@knight-lab/timelinejs": "^3.8.20",
     "@material-ui/icons": "4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
+    "@merc/react-timeline": "^0.1.42",
     "axios": "^0.26.0",
     "gitea-react-toolkit": "^2.1.0-rc.7",
     "path": "^0.12.7",
@@ -83,6 +84,7 @@
     "react-remark": "^2.1.0",
     "scripture-resources-rcl": "4.1.9",
     "showdown": "^2.0.0",
+    "styled-components": "^5.3.3",
     "timelinejs-react": "^1.1.1",
     "translation-helps-rcl": "^3.2.0"
   }

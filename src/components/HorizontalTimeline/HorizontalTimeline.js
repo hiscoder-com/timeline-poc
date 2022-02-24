@@ -17,13 +17,13 @@ const options = {
   language: 'ru',
 };
 
-function Timeline() {
+function HorizontalTimeline({ link }) {
   const [events, setEvents] = React.useState([]);
 
   const timelineEl = React.useRef(null);
   React.useEffect(() => {
     axios
-      .get('https://git.door43.org/BSA/ru_timeline/raw/branch/master/kings.tsv')
+      .get(link)
       .then((axiosRes) => {
         const data = axiosRes.data;
         const dataList = data
@@ -82,15 +82,15 @@ function Timeline() {
   );
 }
 
-Timeline.defaultProps = {
+HorizontalTimeline.defaultProps = {
   text: 'Test',
 };
 
-Timeline.propTypes = {
+HorizontalTimeline.propTypes = {
   /** Title */
   text: PropTypes.string,
   /** Event by clicking on the Timeline. */
   onClick: PropTypes.func,
 };
 
-export default Timeline;
+export default HorizontalTimeline;
