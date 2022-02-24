@@ -9452,7 +9452,7 @@ js-base64@^3.7.2:
 
 js-yaml-parser@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.npmjs.org/js-yaml-parser/-/js-yaml-parser-1.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/js-yaml-parser/-/js-yaml-parser-1.0.0.tgz#818eec35b34eaa59a1eae1f78c86a4e8f79d1d0d"
   integrity sha512-k8bjr68s/d8+udOaTCy+Vfezr2dYtY3MUl/9nsLGeoXFa0sbSkx/I/6DONHYrWoKzKeeY/1Eb6j8K0sX2Vckdg==
   dependencies:
     argparse "^1.0.7"

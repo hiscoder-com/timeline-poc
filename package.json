@@ -79,6 +79,7 @@
     "@merc/react-timeline": "^0.1.42",
     "axios": "^0.26.0",
     "gitea-react-toolkit": "^2.1.0-rc.7",
+    "js-yaml-parser": "^1.0.0",
     "path": "^0.12.7",
     "react-markdown": "^8.0.0",
     "react-remark": "^2.1.0",
