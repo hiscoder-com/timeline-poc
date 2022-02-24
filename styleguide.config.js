@@ -19,6 +19,10 @@ let sections = [
     name: 'Card Block',
     components: ['src/components/Card/Card.js'],
   },
+  {
+    name: 'Manifest',
+    components: ['src/components/Manifest/Manifest.js'],
+  },
 ];
 
 module.exports = {
