@@ -44,7 +44,7 @@ function VerticalTimeline({ link }) {
             headline: element[3],
             // text: element[4].replaceAll('\\n', '\n'),
           };
-          console.log(_events);
+
           _events.push(
             <TextEvent
               key={element[0]}
