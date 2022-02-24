@@ -1,37 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Timeline, Events, UrlButton, ImageEvent, TextEvent } from '@merc/react-timeline';
+import axios from 'axios';
 
-function VerticalTimeline() {
+function VerticalTimeline({ link }) {
+  const [events, setEvents] = useState([]);
+  React.useEffect(() => {
+    axios
+      .get(link)
+      .then((axiosRes) => {
+        const data = axiosRes.data;
+        const dataList = data
+          .split('\n')
+          .map((el) => el.split('\t'))
+          .slice(1);
+        const _events = [];
+        dataList.forEach((element) => {
+          let newEvent = {};
+          if (element[1]) {
+            const [year, month, day] = element[1].split('.');
+            if (year) {
+              newEvent.start_date = { year };
+            }
+            if (month) {
+              newEvent.start_date.month = month;
+            }
+            if (day) {
+              newEvent.start_date.day = day;
+            }
+          }
+          if (element[2]) {
+            const [year, month, day] = element[2].split('.');
+            if (year) {
+              newEvent.end_date = { year };
+            }
+            if (month) {
+              newEvent.end_date.month = month;
+            }
+            if (day) {
+              newEvent.end_date.day = day;
+            }
+          }
+          newEvent.text = {
+            headline: element[3],
+            // text: element[4].replaceAll('\\n', '\n'),
+          };
+
+          _events.push(
+            <TextEvent
+              key={element[0]}
+              date={
+                element[1]
+                  ? element[1] + (element[2] ? ' - ' + element[2] : '')
+                  : element[3]
+              }
+              text={
+                (element[1] ? '## ' + element[3] + '\n' : '') +
+                ('' + element[4]).replaceAll('\\n', '\n')
+              }
+            />
+          );
+        });
+        setEvents(_events);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
-    <Timeline>
-      <Events>
-        <TextEvent
-          date="1/1/19"
-          text={'##Ровоам\n\n### Факты:\n\n![Ровоам](https://filedn.com/lD0GfuMvTstXgqaJfpLL87S/sweet_images/jpg/11/11_1Ki_12_01_RG.jpg)\n\nРовоам — это мужское имя. Так звали одного из сыновей царя Соломона, который стал царём израильского народа после смерти отца.\n\n*   В начале своего царствования Ровоам был суров со своим народом, и тогда десять из двенадцати племён Израиля восстали против него. Эти племена образовали отдельное царство, которое стало называться царство Израиля, Израилем или “Северным царством” (так как к этому царству отошли северные территории).\n\n*   Ровоам продолжал царствовать над южной частью Обещанной Богом Земли. Жителями этих территорий были представители двух израильских племён — Иуды и Вениамина, и поэтому это царство стало называться царством Иуды, Иудеей или “Южным царством”.\n\n* Ровоам был нечестивым царём, который не слушался Яхве и поклонялся ложным богам.\n\n### Ссылки на библейский текст:\n\n* 1 Пар. 3:10\n* 3 Цар. 11:41-43\n* 3 Цар. 14:21\n* Мф. 1:7'.replace(
-            '\\n',
-            '\n'
-          )}
-        />
-
-        <TextEvent
-          date="1/2/19"
-          text="Events alternate by default (given enough space in the browser)"
-        />
-
-        <ImageEvent
-          date="4/13/19"
-          text="You can embed images..."
-          src="https://res.cloudinary.com/dovoq8jou/image/upload/v1564772194/jellyfish.jpg"
-          alt="jellyfish swimming"
-          credit="Photo by [@tavi004](https://unsplash.com/@tavi004)"
-        >
-          <div>
-            <UrlButton href="https://unsplash.com/search/photos/undersea">
-              View more undersea photos
-            </UrlButton>
-          </div>
-        </ImageEvent>
-      </Events>
+    <Timeline opts={{ layout: 'inline-evts-inline-date' }}>
+      <Events>{events}</Events>
     </Timeline>
   );
 }
