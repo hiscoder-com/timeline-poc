@@ -10,6 +10,7 @@ let sections = [
   {
     name: 'TimeLine Block',
     components: [
+      'src/components/Timeline/Timeline.js',
       'src/components/HorizontalTimeline/HorizontalTimeline.js',
       'src/components/VerticalTimeline/VerticalTimeline.js',
     ],
