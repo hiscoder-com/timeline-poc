@@ -42,13 +42,21 @@ function VerticalTimeline({ link }) {
           }
           newEvent.text = {
             headline: element[3],
-            text: element[4].replaceAll('\\n', '\n'),
+            // text: element[4].replaceAll('\\n', '\n'),
           };
+          console.log(_events);
           _events.push(
             <TextEvent
               key={element[0]}
-              date={element[3]}
-              text={element[4].replaceAll('\\n', '\n')}
+              date={
+                element[1]
+                  ? element[1] + (element[2] ? ' - ' + element[2] : '')
+                  : element[3]
+              }
+              text={
+                (element[1] ? '## ' + element[3] + '\n' : '') +
+                ('' + element[4]).replaceAll('\\n', '\n')
+              }
             />
           );
         });
@@ -56,8 +64,9 @@ function VerticalTimeline({ link }) {
       })
       .catch((err) => console.log(err));
   }, []);
+
   return (
-    <Timeline>
+    <Timeline opts={{ layout: 'inline-evts-inline-date' }}>
       <Events>{events}</Events>
     </Timeline>
   );
