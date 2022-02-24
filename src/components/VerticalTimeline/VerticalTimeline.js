@@ -1,31 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Timeline, Events, UrlButton, ImageEvent, TextEvent } from '@merc/react-timeline';
+import axios from 'axios';
 
-function VerticalTimeline() {
+function VerticalTimeline({ link }) {
+  const [events, setEvents] = useState([]);
+  React.useEffect(() => {
+    axios
+      .get(link)
+      .then((axiosRes) => {
+        const data = axiosRes.data;
+        const dataList = data
+          .split('\n')
+          .map((el) => el.split('\t'))
+          .slice(1);
+        const _events = [];
+        dataList.forEach((element) => {
+          let newEvent = {};
+          if (element[1]) {
+            const [year, month, day] = element[1].split('.');
+            if (year) {
+              newEvent.start_date = { year };
+            }
+            if (month) {
+              newEvent.start_date.month = month;
+            }
+            if (day) {
+              newEvent.start_date.day = day;
+            }
+          }
+          if (element[2]) {
+            const [year, month, day] = element[2].split('.');
+            if (year) {
+              newEvent.end_date = { year };
+            }
+            if (month) {
+              newEvent.end_date.month = month;
+            }
+            if (day) {
+              newEvent.end_date.day = day;
+            }
+          }
+          newEvent.text = {
+            headline: element[3],
+            text: element[4].replaceAll('\\n', '\n'),
+          };
+          _events.push(
+            <TextEvent
+              key={element[0]}
+              date={element[3]}
+              text={element[4].replaceAll('\\n', '\n')}
+            />
+          );
+        });
+        setEvents(_events);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <Timeline>
-      <Events>
-        <TextEvent date="1/1/19" text="**Markdown** is *supported*" />
-
-        <TextEvent
-          date="1/2/19"
-          text="Events alternate by default (given enough space in the browser)"
-        />
-
-        <ImageEvent
-          date="4/13/19"
-          text="You can embed images..."
-          src="https://res.cloudinary.com/dovoq8jou/image/upload/v1564772194/jellyfish.jpg"
-          alt="jellyfish swimming"
-          credit="Photo by [@tavi004](https://unsplash.com/@tavi004)"
-        >
-          <div>
-            <UrlButton href="https://unsplash.com/search/photos/undersea">
-              View more undersea photos
-            </UrlButton>
-          </div>
-        </ImageEvent>
-      </Events>
+      <Events>{events}</Events>
     </Timeline>
   );
 }
