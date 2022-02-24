@@ -39,7 +39,15 @@ function Card({ username, repository }) {
         showSaveChangesPrompt={false}
       >
         <Manifest setProject={setProject} link={server + uri} />
-        {project && <Timeline link={server + tlLink} type={project.categories[0]} />}
+        {project && (
+          <Timeline
+            link={
+              server +
+              path.join(username, repository, 'raw/branch', 'master', project.path)
+            }
+            type={project.categories[0]}
+          />
+        )}
       </CardData>
     </>
   );
