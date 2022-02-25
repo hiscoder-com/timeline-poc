@@ -13,6 +13,7 @@ function Manifest({ link, setProject }) {
       .then((res) => {
         const json = res.data ? YAML.safeLoad(res.data) : null;
         setProjects(json.projects);
+        setProject(json.projects[current]);
       })
       .catch((err) => console.log(err));
   }, []);
