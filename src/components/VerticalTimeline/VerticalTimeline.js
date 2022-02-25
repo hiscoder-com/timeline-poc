@@ -63,7 +63,7 @@ function VerticalTimeline({ link }) {
         setEvents(_events);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [link]);
 
   return (
     <Timeline opts={{ layout: 'inline-evts-inline-date' }}>

@@ -9,7 +9,7 @@ import path from 'path';
 const server = 'https://git.door43.org/';
 function Card({ username, repository }) {
   const [project, setProject] = React.useState();
-  const [tlLink, setTlLink] = React.useState();
+  const [tlData, setTlData] = React.useState({ orientation: null, url: null });
   const uri = path.join(username, repository, 'raw/branch', 'master', './manifest.yaml');
   log({ uri, project });
   React.useEffect(() => {
@@ -21,7 +21,7 @@ function Card({ username, repository }) {
         'master',
         project.path
       );
-      setTlLink(_tlLink);
+      setTlData({ orientation: project.categories[0], url: server + _tlLink });
     }
   }, [project]);
   return (
@@ -39,15 +39,7 @@ function Card({ username, repository }) {
         showSaveChangesPrompt={false}
       >
         <Manifest setProject={setProject} link={server + uri} />
-        {project && (
-          <Timeline
-            link={
-              server +
-              path.join(username, repository, 'raw/branch', 'master', project.path)
-            }
-            type={project.categories[0]}
-          />
-        )}
+        <Timeline link={tlData.url} type={tlData.orientation} />
       </CardData>
     </>
   );

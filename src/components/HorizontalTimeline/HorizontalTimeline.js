@@ -67,13 +67,13 @@ function HorizontalTimeline({ link }) {
         setEvents(_events);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [link]);
 
   React.useEffect(() => {
     if (timelineEl.current) {
       new TimelineJs(timelineEl.current, { events }, options);
     }
-  }, [timelineEl.current]);
+  }, [timelineEl.current, events]);
 
   return (
     <>
