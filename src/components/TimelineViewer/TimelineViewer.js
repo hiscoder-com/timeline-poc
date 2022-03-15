@@ -7,7 +7,7 @@ import { Manifest } from '..';
 import path from 'path';
 
 const server = 'https://git.door43.org/';
-function Card({ username, repository }) {
+function TimelineViewer({ username, repository }) {
   const [project, setProject] = React.useState();
   const [tlData, setTlData] = React.useState({ orientation: null, url: null });
   const uri = path.join(username, repository, 'raw/branch', 'master', './manifest.yaml');
@@ -45,15 +45,15 @@ function Card({ username, repository }) {
   );
 }
 
-Card.defaultProps = {
+TimelineViewer.defaultProps = {
   text: 'Test',
 };
 
-Card.propTypes = {
+TimelineViewer.propTypes = {
   /** Title */
   text: PropTypes.string,
-  /** Event by clicking on the Card. */
+  /** Event by clicking on the TimelineViewer. */
   onClick: PropTypes.func,
 };
 
-export default Card;
+export default TimelineViewer;

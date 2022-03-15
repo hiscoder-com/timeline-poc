@@ -16,8 +16,8 @@ let sections = [
     ],
   },
   {
-    name: 'Card Block',
-    components: ['src/components/Card/Card.js'],
+    name: 'TimelineViewer Block',
+    components: ['src/components/TimelineViewer/TimelineViewer.js'],
   },
   {
     name: 'Manifest',
