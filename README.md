@@ -13,3 +13,4 @@ Components:
 - Timeline - extended version of the component, in which you can specify the type of timeline
 - Manifest - a component that parses the manifest from the repository
 - TimelineViewer - component that displays timelines from the repository
+
